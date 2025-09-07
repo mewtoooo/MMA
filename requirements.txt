@@ -1,0 +1,7 @@
+Flask==3.0.3
+Werkzeug==3.0.3
+
+# Pin OpenAI SDK compatible with openai.ChatCompletion.create
+openai==0.28.1
+
+

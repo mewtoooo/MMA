@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Fin<span>Track</span></div>
+            <nav class="nav">
+                <div class="links">
+                    <a href="#features">Features</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                    <a href="/login" class="btn" id="login-btn">Login</a>
+                    <div class="profile-btn" id="profile-btn" style="display: none;">
+                        <a href="/profile" class="profile-avatar" id="profile-avatar">U</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-centered">
+                <div class="hero-copy">
+                    <h1 class="hero-title">FinTrack – Track Smart, Live Free.</h1>
+                    <p class="hero-subtitle">Plan your expenses, save smarter, live better – no matter who you are.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="margin-top: -40px;">
+            <div class="container">
+                <div class="quick-preview-card centered">
+                    <form id="quick-preview-form">
+                        <div class="field">
+                            <label for="salary">Monthly Salary</label>
+                            <input type="text" id="salary" name="salary" placeholder="e.g. 15000" required>
+                        </div>
+                        <div class="field">
+                            <label for="goal">Future Goal</label>
+                            <input type="text" id="goal" name="goal" placeholder="e.g. Buying a new car" required>
+                        </div>
+                        <!-- New enriched inputs -->
+                        <div class="field">
+                            <div class="label-with-help">
+                                <label for="fixed-expenses">Fixed Expenses (Optional / Auto-detect)</label>
+                                <span class="help-icon" tabindex="0" aria-label="Info" role="button">ℹ️
+                                    <span class="help-tooltip">Some costs repeat every month (EMI, rent, family support). Mentioning them helps us plan realistic monthly cash flow.</span>
+                                </span>
+                            </div>
+                            <input type="text" id="fixed-expenses" name="fixed_expenses" placeholder="e.g. 8000 (rent, EMI, etc.)">
+                        </div>
+
+                        <div class="field">
+                            <div class="label-with-help">
+                                <label for="wants-level">Lifestyle Preference / Wants</label>
+                                <span class="help-icon" tabindex="0" aria-label="Info" role="button">ℹ️
+                                    <span class="help-tooltip">Choose your month’s comfort level. Lower wants = higher saving. Higher wants = more for lifestyle.</span>
+                                </span>
+                            </div>
+                            <div class="slider-field">
+                                <input type="range" id="wants-level" name="wants_level" min="0" max="2" step="1" value="1" aria-valuemin="0" aria-valuemax="2" aria-valuenow="1">
+                                <div class="slider-labels" aria-hidden="true">
+                                    <span>LOW</span>
+                                    <span>MEDIUM</span>
+                                    <span>HIGH</span>
+                                </div>
+                                <div id="wants-hint" class="slider-hint">Balanced month: Wants ≈ 30%, Savings ≈ 14%</div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="label-with-help">
+                                <label for="age-stage">Age / Life Stage (Optional)</label>
+                                <span class="help-icon" tabindex="0" aria-label="Info" role="button">ℹ️
+                                    <span class="help-tooltip">Investment mix changes by life stage. Sharing this improves long-term allocation suggestions.</span>
+                                </span>
+                            </div>
+                            <select id="age-stage" name="age_stage">
+                                <option value="">Select</option>
+                                <option value="student">Student / Early Career</option>
+                                <option value="mid">Mid Career</option>
+                                <option value="family">Family / Responsibilities</option>
+                                <option value="pre-retire">Pre-Retirement</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <div class="label-with-help">
+                                <label for="risk">Risk Appetite (Optional)</label>
+                                <span class="help-icon" tabindex="0" aria-label="Info" role="button">ℹ️
+                                    <span class="help-tooltip">Low/Medium/High helps decide the split across FD, Mutual Funds, or higher-risk assets.</span>
+                                </span>
+                            </div>
+                            <select id="risk" name="risk">
+                                <option value="">Select</option>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <div class="label-with-help">
+                                <label for="location">Location (Optional)</label>
+                                <span class="help-icon" tabindex="0" aria-label="Info" role="button">ℹ️
+                                    <span class="help-tooltip">Costs vary by state. Location helps tailor a plan you can actually follow.</span>
+                                </span>
+                            </div>
+                            <select id="location" name="location">
+                                <option value="">Select State</option>
+                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chandigarh">Chandigarh</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Ladakh">Ladakh</option>
+                                <option value="Lakshadweep">Lakshadweep</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Puducherry">Puducherry</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn lg primary stretch">Show My Plan</button>
+                    </form>
+                    <div id="preview-result" class="preview-result" role="status" aria-live="polite"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section alt" id="features">
+            <div class="container">
+                <h2 class="section-title">Why Choose Smart Money?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Smart Analytics</h3>
+                        <p>Get insights into your spending patterns with AI-powered analytics that help you make better financial decisions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Goal Tracking</h3>
+                        <p>Set and track your financial goals with personalized recommendations and progress monitoring.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Secure & Private</h3>
+                        <p>Your financial data is encrypted and secure. We never share your information with third parties.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="testimonials">
+            <div class="container">
+                <h2 class="section-title">What Our Users Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Smart Money helped me save ₹50,000 in just 6 months. The insights are incredible!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">P</div>
+                            <div class="author-info">
+                                <h4>Priya Sharma</h4>
+                                <span>Software Engineer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"Finally, a money management app that actually understands Indian spending habits."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">R</div>
+                            <div class="author-info">
+                                <h4>Rahul Kumar</h4>
+                                <span>Business Analyst</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section alt" id="contact">
+            <div class="container">
+                <h2 class="section-title">Ready to Start?</h2>
+                <p class="section-subtitle">Join thousands of users who are already managing their money smarter.</p>
+                <div class="cta-buttons">
+                    <a href="/signup" class="btn xl primary">Get Started Free</a>
+                    <a href="/login" class="btn xl ghost">Already have an account?</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">Fin<span>Track</span></div>
+                <p>&copy; 2024 FinTrack. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Check authentication status and update header
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.getElementById('login-btn');
+            const profileBtn = document.getElementById('profile-btn');
+            const profileAvatar = document.getElementById('profile-avatar');
+            
+            // Check if user is authenticated
+            fetch('/api/auth/me')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.authenticated) {
+                        // User is logged in - hide login button, show profile button
+                        loginBtn.style.display = 'none';
+                        profileBtn.style.display = 'flex';
+                        
+                        // Set profile avatar initials
+                        const userName = data.user.name || data.user.email;
+                        const initials = getUserInitials(userName);
+                        profileAvatar.textContent = initials;
+                    } else {
+                        // User is not logged in - show login button, hide profile button
+                        loginBtn.style.display = 'inline-block';
+                        profileBtn.style.display = 'none';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking auth status:', error);
+                    // On error, show login button
+                    loginBtn.style.display = 'inline-block';
+                    profileBtn.style.display = 'none';
+                });
+        });
+        
+        // Function to get user initials from name or email
+        function getUserInitials(name) {
+            if (!name) return 'U';
+            
+            // If it's an email, extract the part before @
+            if (name.includes('@')) {
+                name = name.split('@')[0];
+            }
+            
+            // Split by spaces and get first letters
+            const parts = name.trim().split(' ');
+            if (parts.length >= 2) {
+                // First letter of first name + first letter of last name
+                return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+            } else if (parts.length === 1) {
+                // Just first letter of the name
+                return parts[0][0].toUpperCase();
+            }
+            
+            return 'U';
+        }
+    </script>
+</body>
+</html>
